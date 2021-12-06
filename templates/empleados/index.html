@@ -7,7 +7,33 @@
     <title>Pagina Inicial</title>
 </head>
 <body>
-    <h1>TITULO PRUEBA</h1>
+    <h1>LISTA EMPLEADOS</h1>
+
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Foto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for empleado in empleados%} <!-- Iteramos la tupla de empleados para que me muestre los registros -->
+            <tr>
+                <td>{{empleado[0] }}</td> <!-- Aca le indico la posicion de la tupla para que imprima, va a estar en el orden de la BD -->
+                <td>{{empleado[1] }}</td>
+                <td>{{empleado[2] }}</td>
+                <td>{{empleado[3] }}</td>
+                <td> <a href="/edit/{{empleado[0]}}">Editar</a> | 
+                <a href="/destroy/{{empleado[0]}}"> Borrar</a> 
+                </td> <!-- Indico que el Borrar vaya al link de destroy y la posicion 0 donde esta el ID de cada registro -->
+            </tr>
+            {%endfor%} <!-- Finaliza la iteracion todo dentro de la tr -->
+        </tbody>
+    </table>
+
 
 </body>
 </html>
